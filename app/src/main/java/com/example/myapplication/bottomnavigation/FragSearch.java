@@ -100,7 +100,7 @@ public class FragSearch extends Fragment {
         List<Map<String, String>> veges = new ArrayList<>(); // 채소 정보를 저장할 리스트
 
 
-
+        new Thread(() -> {
         for (String code : categoryCodes) {
             String url_text = "https://www.kamis.or.kr/service/price/xml.do?action=dailyPriceByCategoryList&p_product_cls_code=02&p_country_code=1101&" +
                     "p_regday=2023-06-23&" +
@@ -110,15 +110,18 @@ public class FragSearch extends Fragment {
 
 
 
-
+            //System.out.println("xxxxxxxxxxxx");
             String text = getText(url_text);
+
+            System.out.println(text);
+
             Document doc = convertStringToDocument(text);
 
             // 필요한 정보 뽑아내는 코드 구현
             NodeList nList = doc.getElementsByTagName("item");
             System.out.println("파싱할 리스트 수 : "+ nList.getLength());
 
-            for(int temp = 0; temp < nList.getLength(); temp++){
+            for(int temp = 1; temp < nList.getLength(); temp++){
                 Node nNode = nList.item(temp);
                 if(nNode.getNodeType() == Node.ELEMENT_NODE){
                     Element eElement = (Element) nNode;
@@ -129,9 +132,12 @@ public class FragSearch extends Fragment {
                     System.out.println("당일 가격: " + getTagValue("dpr1", eElement));
                     System.out.println("1일 전 가격: " + getTagValue("dpr2", eElement));
                     System.out.println("1주일 전 가격: " + getTagValue("dpr3", eElement));
+                    System.out.println("상품 종류  : " + getTagValue("kind_name", eElement));
+
+
 
                     Map<String, String> info = new HashMap<>();
-                    info.put("item_name", getTagValue("item_name", eElement));
+                    info.put("item_name",  getTagValue("item_name",eElement)+"\n"+getTagValue("kind_name", eElement));
                     info.put("item_code", getTagValue("item_code", eElement));
                     info.put("dpr1", getTagValue("dpr1", eElement));
                     info.put("dpr2", getTagValue("dpr2", eElement));
@@ -146,6 +152,10 @@ public class FragSearch extends Fragment {
                 }   // if end
             }   // for end
         } // for end
+            b = false;
+        }).start();
+
+        while(b){}
 
         System.out.println("Fruits: " + fruits);
         System.out.println("Vegetables: " + veges);
@@ -194,8 +204,8 @@ public class FragSearch extends Fragment {
             int drawableId;
             drawableId = R.drawable.default_vege;  // you may need a different default image for vegetables
 
-            if(i < drawables.size()){
-                drawableId = drawables.get(i);
+            if(i+fruits.size() < drawables.size()){
+                drawableId = drawables.get(i+fruits.size());
             } else {
                 // Default drawableId if there are not enough drawables
                 drawableId = R.drawable.default_image;

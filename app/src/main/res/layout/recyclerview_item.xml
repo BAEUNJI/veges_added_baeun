@@ -37,10 +37,10 @@
                 android:text="TextView"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.071"
+                card_view:layout_constraintHorizontal_bias="0.0"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView"
                 card_view:layout_constraintTop_toBottomOf="@+id/textView"
-                card_view:layout_constraintVertical_bias="0.222" />
+                card_view:layout_constraintVertical_bias="0.472" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -55,8 +55,8 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="128dp"
-                android:layout_height="38dp"
+                android:layout_width="151dp"
+                android:layout_height="94dp"
                 android:layout_margin="8dp"
                 android:text="text"
                 android:textSize="24dp"
