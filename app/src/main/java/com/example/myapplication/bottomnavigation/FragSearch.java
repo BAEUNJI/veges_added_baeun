@@ -125,7 +125,7 @@ public class FragSearch extends Fragment {
                 Node nNode = nList.item(temp);
                 if(nNode.getNodeType() == Node.ELEMENT_NODE){
                     Element eElement = (Element) nNode;
-                    if (getTagValue("rank",eElement).contains("중품") || getTagValue("rank",eElement).contains("M과")) continue;
+                    if (getTagValue("rank",eElement).contains("중품") || getTagValue("rank",eElement).contains("M과")|| getTagValue("item_name",eElement).contains("마늘")) continue;
                     System.out.println("######################");
                     System.out.println("상품 이름  : " + getTagValue("item_name", eElement));
                     System.out.println("상품 코드  : " + getTagValue("item_code", eElement));
@@ -164,8 +164,16 @@ public class FragSearch extends Fragment {
         List<Integer> drawables = Arrays.asList(R.drawable.apple, R.drawable.pear,
                 R.drawable.mandarin, R.drawable.banana, R.drawable.kiwi, R.drawable.pineapple,
                 R.drawable.orange, R.drawable.lemon, R.drawable.cherry, R.drawable.mango,
-                R.drawable.kimchicabbage, R.drawable.cabbage, R.drawable.spinach, R.drawable.lettuce,
-                R.drawable.wintercabbage, R.drawable.watermelon, R.drawable.orientalmelon);
+                R.drawable.kimchicabbage, R.drawable.cabbage, R.drawable.spinach, R.drawable.redlettuce,
+                R.drawable.lettuce, R.drawable.wintercabbage, R.drawable.watermelon, R.drawable.orientalmelon,
+                R.drawable.dadagi, R.drawable.cucumber, R.drawable.babypumpkin, R.drawable.zukini, R.drawable.tomato,
+                R.drawable.radish, R.drawable.carrot, R.drawable.youngradish,R.drawable.driedhotpepper,
+                R.drawable.greenchillpepper, R.drawable.twistedpepper, R.drawable.hotpepper,R.drawable.cucumberpepper,
+                R.drawable.redpepper, R.drawable.onion, R.drawable.greenonion, R.drawable.chive,
+                R.drawable.ginger, R.drawable.minari, R.drawable.leaf, R.drawable.greenpaprika,
+                R.drawable.paprika, R.drawable.melon, R.drawable.babycabbage, R.drawable.broccoli,
+                R.drawable.cherrytomato);
+
 
 
 
