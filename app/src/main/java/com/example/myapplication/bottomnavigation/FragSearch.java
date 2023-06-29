@@ -207,7 +207,6 @@ public class FragSearch extends Fragment {
 
 
 
-
         //========================================================
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
